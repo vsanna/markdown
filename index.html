@@ -1,44 +1,59 @@
 <html>
+
 <head>
-<script src="js/vue.js"></script>
-<script src="js/marked.js"></script>
-<script src="js/highlight.min.js"></script>
-<link rel="stylesheet" href="css/editor.css">
-<link rel="stylesheet" href="css/github.css">
-<link rel="stylesheet" href="css/solarized_light.min.css">
-<a href="#"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+    <script src="js/marked.js"></script>
+    <script src="js/highlight.min.js"></script>
+    <script src="js/vue.js"></script>
+    <link rel="stylesheet" href="css/github.css">
+    <link rel="stylesheet" href="css/solarized_light.min.css">
+    <a href="#"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
 </head>
-<body style='color:yellow'>
-<div id="editor">
-    <textarea v-model="input" style="display:none;" id="SW1"></textarea>
-    <div v-html="input | marked" id="SW2">
+
+<body>
+    <div id="editor">
+        <textarea v-model="input" style="display:none;" id="switch_1"></textarea>
+        <div v-html="input | marked" id="switch_2">
+        </div>
     </div>
-</div>
-<script src="js/editor.js"></script>
-<script type="text/javascript">
 
-function Display(no){
+    <div class="iframe-content">
 
-    if(no == "no1"){
+        <a href="javascript:;" onclick="Display('no1')"><img src="https://image.freepik.com/free-icon/pencil-in-diagonal-position-black-symbol-for-interface_318-60347.png" width="20px" height="20px"></a>
+        <a href="javascript:;" onclick="Display('no2')"><img src="https://image.freepik.com/free-icon/eye-close-up-visibility-button_318-77384.png" width="20px" height="20px"></a>
+        <a href="javascript:;" onclick="OpenWindow()"><img src="http://image005.flaticon.com/1/svg/64/64827.svg" width="20px" height="20px"></a>
+        <a href="javascript:;" onclick="CloseWindow()"><img src="https://image.freepik.com/free-icon/trash-bin-symbol_318-10194.jpg" width="20px" height="20px"></a>
 
-        document.getElementById("SW1").style.display = "block";
-        document.getElementById("SW2").style.display = "none";
+    </div>
 
-    }else if(no == "no2"){
+    <script src="js/editor.js"></script>
+    <script type="text/javascript">
+        function Display(no) {
 
-        document.getElementById("SW1").style.display = "none";
-        document.getElementById("SW2").style.display = "block";
+            if (no == "no1") {
 
-    }
+                document.getElementById("switch_1").style.display = "block";
+                document.getElementById("switch_2").style.display = "none";
 
-}</script>
-<div class="iframe-content">
+            } else if (no == "no2") {
 
-    <a href="javascript:;" onclick="Display('no1')"><img src="https://image.freepik.com/free-icon/pencil-in-diagonal-position-black-symbol-for-interface_318-60347.png" width="20px" height="20px"></a>
-    <a href="javascript:;" onclick="Display('no2')"><img src="https://image.freepik.com/free-icon/eye-close-up-visibility-button_318-77384.png" width="20px" height="20px"></a>
-    <img src="https://image.freepik.com/free-icon/trash-bin-symbol_318-10194.jpg" width="20px" height="20px">
+                document.getElementById("switch_1").style.display = "none";
+                document.getElementById("switch_2").style.display = "block";
 
-  </div>
-</div>
+            }
+
+        }
+
+        function OpenWindow() {
+                window.open('another.html', '', 'width=300, height=400, left=100, top=100');
+        }
+
+        function CloseWindow() {
+            var confirmation = confirm('Are you sure ?')
+            if (confirmation) {
+                window.close()
+            }
+        }
+    </script>
 </body>
+
 </html>

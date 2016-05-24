@@ -13,7 +13,7 @@ marked.setOptions({
 new Vue({
     el: '#editor',
     data: {
-        input: '## Markdown Stickies\r- Edit here\r- Write your to-do list\r> With Markdown Stickies.  \r> Nice and cool, isn\'t it ?\r\r### Help\r- Check our website: http://\r- Markdown Reference: http://\r\r|app name|ver|by|\r|-|-|-|\r|Markdown Stickies|0.1.0|honake|\r'
+        input: ''
     },
     filters: {
         marked: marked
