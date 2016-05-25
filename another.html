@@ -4,56 +4,28 @@
     <script src="js/marked.js"></script>
     <script src="js/highlight.min.js"></script>
     <script src="js/vue.js"></script>
+    <link rel="stylesheet" href="css/editor.css">
     <link rel="stylesheet" href="css/github.css">
     <link rel="stylesheet" href="css/solarized_light.min.css">
 </head>
-<div id="editor">
-    <textarea v-model="input" style="display:none;" id="switch_1"></textarea>
-    <div v-html="input | marked" id="switch_2">
+
+<body>
+    <div id="editor">
+        <textarea v-model="input" style="display:none;" id="switch_1"></textarea>
+        <div v-html="input | marked" id="switch_2">
+        </div>
     </div>
-</div>
 
-<div class="iframe-content">
+    <div class="navigation">
 
-    <a href="javascript:;" onclick="Display('no1')"><img src="https://image.freepik.com/free-icon/pencil-in-diagonal-position-black-symbol-for-interface_318-60347.png" width="20px" height="20px"></a>
-    <a href="javascript:;" onclick="Display('no2')"><img src="https://image.freepik.com/free-icon/eye-close-up-visibility-button_318-77384.png" width="20px" height="20px"></a>
-    <a href="javascript:;" onclick="OpenWindow()"><img src="http://image005.flaticon.com/1/svg/64/64827.svg" width="20px" height="20px"></a>
-    <a href="javascript:;" onclick="CloseWindow()"><img src="https://image.freepik.com/free-icon/trash-bin-symbol_318-10194.jpg" width="20px" height="20px"></a>
+        <a href="javascript:;" onclick="Display('no1')"><img src="https://image.freepik.com/free-icon/pencil-in-diagonal-position-black-symbol-for-interface_318-60347.png" width="20px" height="20px"></a>
+        <a href="javascript:;" onclick="Display('no2')"><img src="https://image.freepik.com/free-icon/eye-close-up-visibility-button_318-77384.png" width="20px" height="20px"></a>
+        <a href="javascript:;" onclick="OpenWindow class="material-icons"><img src="http://image005.flaticon.com/1/svg/64/64827.svg" width="20px" height="20px"></a>
+        <a href="javascript:;" onclick="CloseWindow class="material-icons"><img src="https://image.freepik.com/free-icon/trash-bin-symbol_318-10194.jpg" width="20px" height="20px"></a>
 
-</div>
-<script src="js/another.js"></script>
-<script type="text/javascript">
-    function Display(no) {
+    </div>
 
-        if (no == "no1") {
-
-            document.getElementById("switch_1").style.display = "block";
-            document.getElementById("switch_2").style.display = "none";
-
-        } else if (no == "no2") {
-
-            document.getElementById("switch_1").style.display = "none";
-            document.getElementById("switch_2").style.display = "block";
-
-        }
-
-    }
-
-    function OpenWindow() {
-        document.body.addEventListener("click", function(e) {
-            var x = e.pageX; // マウスのX座標
-            var y = e.pageY; // マウスY座標
-        });
-        window.open('another.html', '', 'width=300, height=400, left=100, top=100');
-    }
-
-    function CloseWindow() {
-        var confirmation = confirm('Are you sure ?')
-        if (confirmation) {
-            window.close()
-        }
-    }
-</script>
+    <script src="js/another_editor.js"></script>
 </body>
 
 </html>
