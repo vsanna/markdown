@@ -1,8 +1,25 @@
-// highlightの設定
+// Initialization
 (function() {
     marked.setOptions({
         highlight: function(code, lang) {
             return hljs.highlightAuto(code, [lang]).value;
+        }
+    });
+    new Vue({
+        el: '#master',
+        data: {
+            showMenu: false,
+        },
+        methods: {
+            navigationOpen: function() {
+                this.showMenu = true;
+                console.log('open')
+            },
+            navigationClose: function() {
+                this.showMenu = false;
+                console.log('close')
+
+            }
         }
     });
     new Vue({
@@ -13,8 +30,28 @@
         filters: {
             marked: marked
         }
-    })
+    });
+    /*  new Vue({
+              el: '#navigation',
+              data: {
+                  showMenu: false,
+              },
+              methods: {
+                  navigationOpen: function() {
+                      this.showMenu = true;
+                      console.log('open')
+                  },
+                  navigationClose: function() {
+                      this.showMenu = false;
+                      console.log('close')
+
+                  }
+              }
+          }
+      );*/
 }).call(this);
+
+// Navigation System
 
 function Display(no) {
 
@@ -33,13 +70,10 @@ function Display(no) {
 }
 
 function OpenWindow() {
-    // 要素の位置を取得する
-    var element = document.getElementById("target");
-    var rect = element.getBoundingClientRect();
-    // 座標を計算する
-    var positionX = rect.left + window.pageXOffset; // 要素のX座標
-    var positionY = rect.top + window.pageYOffset; // 要素のY座標
-    window.open('another.html', '', 'width=300, height=400, left=positionX, top=positionY');
+    var rand = Math.floor(Math.random() * 31); // Randomization
+    var x = window.screenX - 300 - rand;
+    var y = window.screenY + rand;
+    window.open('another.html', '', 'width=300, height=400, left=' + x + ', top=' + y);
 }
 
 function CloseWindow() {
@@ -47,4 +81,22 @@ function CloseWindow() {
     if (confirmation) {
         window.close()
     }
+}
+
+function OpacityWindow() {
+    console.log('opacity')
+}
+
+function FloatWindow() {
+    console.log('float')
+}
+
+function WrapWindow() {
+    memoryX = window.innerWidth
+    memoryY = window.innerHeight
+    window.resizeTo(200, 100);
+}
+
+function UnwrapWindow() {
+    window.resizeTo(memoryX, memoryY);
 }

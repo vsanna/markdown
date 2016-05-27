@@ -5,7 +5,24 @@
             return hljs.highlightAuto(code, [lang]).value;
         }
     });
-    new Vue({
+    var master = new Vue({
+        el: '#master',
+        data: {
+            showMenu: false
+        },
+        methods: {
+            navigationOpen: function() {
+                this.showMenu = true;
+                console.log('open')
+            },
+            navigationClose: function() {
+                this.showMenu = false;
+                console.log('close')
+
+            }
+        }
+    });
+    var editor = new Vue({
         el: '#editor',
         data: {
             input: '## Markdown Stickies\r- Edit here\r- Write your to-do list\r> With Markdown Stickies.  \r> Nice and cool, isn\'t it ?\r\r### Help\r- Check our website: http://\r- Markdown Reference: http://\r\r|app name|ver|by|\r|-|-|-|\r|Markdown Stickies|0.1.0|honake|\r'
@@ -14,16 +31,10 @@
             marked: marked
         }
     })
-    new Vue({
-        el: '#navigation',
-        data: {
-            show: false,
-            transitionName: 'navigation'
-        }
-    })
 }).call(this);
 
-// Navigation
+// Navigation System
+
 function Display(no) {
 
     if (no == "no1") {
@@ -45,7 +56,6 @@ function OpenWindow() {
     var x = window.screenX - 300 - rand;
     var y = window.screenY + rand;
     window.open('another.html', '', 'width=300, height=400, left=' + x + ', top=' + y);
-    console.log(x, y)
 }
 
 function CloseWindow() {
@@ -55,27 +65,20 @@ function CloseWindow() {
     }
 }
 
-Vue.transition('expand', {
-  beforeEnter: function (el) {
-    el.textContent = 'beforeEnter'
-  },
-  enter: function (el) {
-    el.textContent = 'enter'
-  },
-  afterEnter: function (el) {
-    el.textContent = 'afterEnter'
-  },
-  enterCancelled: function (el) {
-  },
-  beforeLeave: function (el) {
-    el.textContent = 'beforeLeave'
-  },
-  leave: function (el) {
-    el.textContent = 'leave'
-  },
-  afterLeave: function (el) {
-    el.textContent = 'afterLeave'
-  },
-  leaveCancelled: function (el) {
-  }
-})
+function OpacityWindow() {
+    console.log('opacity')
+}
+
+function FloatWindow() {
+    console.log('float')
+}
+
+function WrapWindow() {
+    memoryX = window.innerWidth
+    memoryY = window.innerHeight
+    window.resizeTo(200, 100);
+}
+
+function UnwrapWindow() {
+    window.resizeTo(memoryX, memoryY);
+}

@@ -1,31 +1,23 @@
 <html>
-
 <head>
     <script src="js/marked.js"></script>
     <script src="js/highlight.min.js"></script>
     <script src="js/vue.js"></script>
-    <link rel="stylesheet" href="css/editor.css">
-    <link rel="stylesheet" href="css/github.css">
-    <link rel="stylesheet" href="css/solarized_light.min.css">
+    <link rel="stylesheet" href="css/style_import.css">
 </head>
-
 <body>
-    <div id="editor">
-        <textarea v-model="input" style="display:none;" id="switch_1"></textarea>
-        <div v-html="input | marked" id="switch_2">
+    <div id="master" v-on:mouseenter="navigationOpen" v-on:mouseleave="navigationClose">
+        <div id="editor">
+            <textarea v-model="input" style="display:none;" id="switch_1"></textarea>
+            <div v-html="input | marked" id="switch_2"></div>
+        </div>
+        <div id="navigation" class="navigation" v-bind:class="{'show': showMenu}">
+            <a href="javascript:;" onclick="Display('no1')" class="material-icons">border_color</a>
+            <a href="javascript:;" onclick="Display('no2')" class="material-icons">remove_red_eye</a>
+            <a href="javascript:;" onclick="OpenWindow()" class="material-icons">note_add</a>
+            <a href="javascript:;" onclick="CloseWindow()" class="material-icons">delete</a>
         </div>
     </div>
-
-    <div class="navigation">
-
-        <a href="javascript:;" onclick="Display('no1')"><img src="https://image.freepik.com/free-icon/pencil-in-diagonal-position-black-symbol-for-interface_318-60347.png" width="20px" height="20px"></a>
-        <a href="javascript:;" onclick="Display('no2')"><img src="https://image.freepik.com/free-icon/eye-close-up-visibility-button_318-77384.png" width="20px" height="20px"></a>
-        <a href="javascript:;" onclick="OpenWindow class="material-icons"><img src="http://image005.flaticon.com/1/svg/64/64827.svg" width="20px" height="20px"></a>
-        <a href="javascript:;" onclick="CloseWindow class="material-icons"><img src="https://image.freepik.com/free-icon/trash-bin-symbol_318-10194.jpg" width="20px" height="20px"></a>
-
-    </div>
-
     <script src="js/another_editor.js"></script>
 </body>
-
 </html>

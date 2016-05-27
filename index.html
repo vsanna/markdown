@@ -1,36 +1,24 @@
 <html>
-
 <head>
     <script src="js/marked.js"></script>
     <script src="js/highlight.min.js"></script>
     <script src="js/vue.js"></script>
-    <link rel="stylesheet" href="css/editor.css">
-    <link rel="stylesheet" href="css/navigation.css">
-    <link rel="stylesheet" href="css/github.css">
-    <link rel="stylesheet" href="css/solarized_light.min.css">
+    <link rel="stylesheet" href="css/style_import.css">
     <a href="#"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
 </head>
-
 <body>
-    <div id="editor">
-        <textarea v-model="input" style="display:none;" id="switch_1"></textarea>
-        <div v-html="input | marked" id="switch_2">
+    <div id="master" v-on:mouseenter="navigationOpen" v-on:mouseleave="navigationClose">
+        <div id="editor">
+            <textarea v-model="input" style="display:none;" id="switch_1"></textarea>
+            <div v-html="input | marked" id="switch_2"></div>
+        </div>
+        <div id="navigation" class="navigation" v-bind:class="{'show': showMenu}">
+            <a href="javascript:;" onclick="Display('no1')" class="material-icons">border_color</a>
+            <a href="javascript:;" onclick="Display('no2')" class="material-icons">remove_red_eye</a>
+            <a href="javascript:;" onclick="OpenWindow()" class="material-icons">note_add</a>
+            <a href="javascript:;" onclick="CloseWindow()" class="material-icons">delete</a>
         </div>
     </div>
-
-    <div class="navigation" v-if="show" :transition="navigation" id="navigation">
-        <a href="javascript:;" onclick="Display('no1')" class="material-icons">border_color</a>
-        <a href="javascript:;" onclick="Display('no2')" class="material-icons">remove_red_eye</a>
-        <a href="javascript:;" onclick="OpenWindow()" class="material-icons">note_add</a>
-        <a href="javascript:;" onclick="CloseWindow()" class="material-icons">delete</a>
-        <br>
-        <a href="javascript:;" onclick="OpenWindow()" class="material-icons">flip_to_front</a>
-        <a href="javascript:;" onclick="OpenWindow()" class="material-icons">opacity</a>
-        <a href="javascript:;" onclick="OpenWindow()" class="material-icons">vertical_align_bottom</a>
-        <a href="javascript:;" onclick="OpenWindow()" class="material-icons">vertical_align_top</a>
-    </div>
-
     <script src="js/editor.js"></script>
 </body>
-
 </html>

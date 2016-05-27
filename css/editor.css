@@ -9,7 +9,7 @@ html, body {
 }
 
 body {
-    background: #ffffff;
+    background: #FFFACD;
 }
 div#switch_2 {
     width: 100%;
@@ -17,6 +17,7 @@ div#switch_2 {
     -webkit-app-region: drag;
     -webkit-user-select: null;
     padding: 8px 16px;
+    color: #333333;
 }
 textarea#switch_1 {
     overflow: visible;
@@ -41,31 +42,18 @@ textarea#switch_1 {
 
 .navigation {
     position: fixed;
-    bottom: 0;
+    bottom: -100px;
     border: 0;
     margin: 0;
-    text-align: center;
-    padding: 0px 0px;
-    opacity: 0.5;
+    padding: 0px 8px;
+    opacity: 0.8;
     width: 100%;
-    background: #dddddd;
     -webkit-app-region: drag;
     -webkit-user-select: null;
-}
-/* 常に表示 */
-
-.expand-transition {
-  transition: all .3s ease;
-  height: 30px;
-  padding: 10px;
-  background-color: #eee;
-  overflow: hidden;
+    -webkit-transition: bottom .3s ease-in-out;
 }
 
-/* .expand-enter は entering に対する開始状態を定義 */
-/* .expand-leave は leaving に対する終了状態を定義 */
-.expand-enter, .expand-leave {
-  height: 0;
-  padding: 0 10px;
-  opacity: 0;
+.navigation.show {
+    bottom: 0;
+    -webkit-transition: bottom .3s ease-in-out;
 }
