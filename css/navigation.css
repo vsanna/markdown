@@ -19,7 +19,7 @@
     -webkit-font-feature-settings: 'liga';
     -webkit-font-smoothing: antialiased;
 }
-a.material-icons {
+i.material-icons {
     font-size: 1.5rem;
     color: white;
     position: relative;
@@ -29,7 +29,7 @@ a.material-icons {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     transition: color 0.2s ease, background-color 0.2s ease, transform 0.3s ease;
 }
-a.material-icons:after {
+i.material-icons:after {
     content: "";
     width: 100%;
     height: 100%;
@@ -41,83 +41,83 @@ a.material-icons:after {
     border-radius: 50%;
     transition: all 0.3s ease;
 }
-a.material-icons:hover:after {
+i.material-icons:hover:after {
     transform: scale(1);
     box-shadow: 10px 0 20px rgba(0, 0, 0, 0.19), 6px 0 6px rgba(0, 0, 0, 0.23);
 }
-a.material-icons:nth-of-type(1) {
+i.material-icons:nth-of-type(1) {
     background-color: #cd8484;
 }
-a.material-icons:nth-of-type(1):hover {
+i.material-icons:nth-of-type(1):hover {
     color: #cd8484;
 }
-a.material-icons:nth-of-type(1):after {
+i.material-icons:nth-of-type(1):after {
     border-color: #cd8484;
 }
-a.material-icons:nth-of-type(2) {
+i.material-icons:nth-of-type(2) {
     background-color: #ec9f83;
 }
-a.material-icons:nth-of-type(2):hover {
+i.material-icons:nth-of-type(2):hover {
     color: #ec9f83;
 }
-a.material-icons:nth-of-type(2):after {
+i.material-icons:nth-of-type(2):after {
     border-color: #ec9f83;
 }
-a.material-icons:nth-of-type(3) {
+i.material-icons:nth-of-type(3) {
     background-color: #cdb274;
 }
-a.material-icons:nth-of-type(3):hover {
+i.material-icons:nth-of-type(3):hover {
     color: #cdb274;
 }
-a.material-icons:nth-of-type(3):after {
+i.material-icons:nth-of-type(3):after {
     border-color: #cdb274;
 }
-a.material-icons:nth-of-type(4) {
+i.material-icons:nth-of-type(4) {
     background-color: #88b999;
 }
-a.material-icons:nth-of-type(4):hover {
+i.material-icons:nth-of-type(4):hover {
     color: #88b999;
 }
-a.material-icons:nth-of-type(4):after {
+i.material-icons:nth-of-type(4):after {
     border-color: #88b999;
 }
-a.material-icons:nth-of-type(5) {
+i.material-icons:nth-of-type(5) {
     background-color: #88b2b9;
 }
-a.material-icons:nth-of-type(5):hover {
+i.material-icons:nth-of-type(5):hover {
     color: #88b2b9;
 }
-a.material-icons:nth-of-type(5):after {
+i.material-icons:nth-of-type(5):after {
     border-color: #88b2b9;
 }
-a.material-icons:nth-of-type(6) {
+i.material-icons:nth-of-type(6) {
     background-color: #8897b9;
 }
-a.material-icons:nth-of-type(6):hover {
+i.material-icons:nth-of-type(6):hover {
     color: #8897b9;
 }
-a.material-icons:nth-of-type(6):after {
+i.material-icons:nth-of-type(6):after {
     border-color: #8897b9;
 }
-a.material-icons:nth-of-type(7) {
+i.material-icons:nth-of-type(7) {
     background-color: #af88b9;
 }
-a.material-icons:nth-of-type(7):hover {
+i.material-icons:nth-of-type(7):hover {
     color: #af88b9;
 }
-a.material-icons:nth-of-type(7):after {
+i.material-icons:nth-of-type(7):after {
     border-color: #af88b9;
 }
-a.material-icons:nth-of-type(8) {
+i.material-icons:nth-of-type(8) {
     background-color: #d59acb;
 }
-a.material-icons:nth-of-type(8):hover {
+i.material-icons:nth-of-type(8):hover {
     color: #d59acb;
 }
-a.material-icons:nth-of-type(8):after {
+i.material-icons:nth-of-type(8):after {
     border-color: #d59acb;
 }
-a.material-icons:hover {
+i.material-icons:hover {
     background-color: transparent;
     transform: rotate(90deg);
     cursor: pointer;
