@@ -10,7 +10,8 @@
         data: {
             input: '## Markdown Stickies\r- Edit here\r- Write your to-do list\r> With Markdown Stickies.  \r> Nice and cool, isn\'t it ?\r\r### Help\r- Check our website: http://\r- Markdown Reference: http://\r\r|app name|ver|by|\r|-|-|-|\r|Markdown Stickies|0.1.0|honake|\r',
             showMenu: false,
-            color: 'color1'
+            color: 'color1',
+            mode: 'view'
         },
         methods: {
             navigationOpen: function() {
@@ -24,10 +25,12 @@
             Edit: function() {
                 document.getElementById("switch_1").style.display = "block";
                 document.getElementById("switch_2").style.display = "none";
+                this.mode = 'edit';
             },
             View: function() {
                 document.getElementById("switch_1").style.display = "none";
                 document.getElementById("switch_2").style.display = "block";
+                this.mode = 'view';
             },
             OpenWindow: function() {
                 var rand = Math.floor(Math.random() * 31); // Randomization

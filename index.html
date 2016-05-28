@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/style_import.css">
 </head>
 
-<body id="master" v-on:mouseenter="navigationOpen" v-on:mouseleave="navigationClose" class="{{color}}">
+<body id="master" v-on:mouseenter="navigationOpen" v-on:mouseleave="navigationClose" class="{{color}} {{mode}}">
     <div class="editor">
         <textarea v-model="input" style="display:none;" id="switch_1"></textarea>
         <div v-html="input | marked" id="switch_2"></div>
