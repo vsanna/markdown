@@ -7,8 +7,14 @@ html, body {
     color: #333333;
 }
 
-body {
-    background: #FFFACD;
+body.color1 {
+    background-color: #fffacd;
+}
+body.color2 {
+    background-color: #facdff;
+}
+body.color3 {
+    background-color: #cdfffa;
 }
 
 div#switch_2 {
@@ -21,7 +27,6 @@ div#switch_2 {
 }
 
 textarea#switch_1 {
-    overflow: visible;
     display: inline-block;
     width: 100%;
     height: 100%;
@@ -46,7 +51,7 @@ textarea#switch_1 {
     bottom: -100px;
     border: 0;
     margin: 0;
-    padding: 0px 8px;
+    padding: 4px 8px;
     opacity: 0.8;
     width: 100%;
     -webkit-app-region: drag;

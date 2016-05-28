@@ -81,41 +81,32 @@ i.material-icons:nth-of-type(4):hover {
 i.material-icons:nth-of-type(4):after {
     border-color: #88b999;
 }
-i.material-icons:nth-of-type(5) {
-    background-color: #88b2b9;
+i.color1 {
+    background-color: #facdff;
 }
-i.material-icons:nth-of-type(5):hover {
-    color: #88b2b9;
+i.color1:hover {
+    color: #facdff;
 }
-i.material-icons:nth-of-type(5):after {
-    border-color: #88b2b9;
+i.color1:after {
+    border-color: #facdff;
 }
-i.material-icons:nth-of-type(6) {
-    background-color: #8897b9;
+i.color2 {
+    background-color: #cdfffa;
 }
-i.material-icons:nth-of-type(6):hover {
-    color: #8897b9;
+i.color2:hover {
+    color: #cdfffa;
 }
-i.material-icons:nth-of-type(6):after {
-    border-color: #8897b9;
+i.color2:after {
+    border-color: #cdfffa;
 }
-i.material-icons:nth-of-type(7) {
-    background-color: #af88b9;
+i.color3 {
+    background-color: #fffacd;
 }
-i.material-icons:nth-of-type(7):hover {
-    color: #af88b9;
+i.color3:hover {
+    color: #fffacd;
 }
-i.material-icons:nth-of-type(7):after {
-    border-color: #af88b9;
-}
-i.material-icons:nth-of-type(8) {
-    background-color: #d59acb;
-}
-i.material-icons:nth-of-type(8):hover {
-    color: #d59acb;
-}
-i.material-icons:nth-of-type(8):after {
-    border-color: #d59acb;
+i.color3:after {
+    border-color: #fffacd;
 }
 i.material-icons:hover {
     background-color: transparent;

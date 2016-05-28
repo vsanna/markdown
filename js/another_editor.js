@@ -9,7 +9,8 @@
         el: '#master',
         data: {
             input: '',
-            showMenu: false
+            showMenu: false,
+            color: 'color1'
         },
         methods: {
             navigationOpen: function() {
@@ -38,6 +39,19 @@
                 var confirmation = confirm('Are you sure ?')
                 if (confirmation) {
                     window.close()
+                }
+            },
+            InvertColors: function() {
+                switch (this.color) {
+                    case 'color1':
+                        this.color = 'color2';
+                        break
+                    case 'color2':
+                        this.color = 'color3';
+                        break
+                    case 'color3':
+                        this.color = 'color1';
+                        break
                 }
             }
         },
