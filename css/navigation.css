@@ -45,72 +45,45 @@ i.material-icons:hover:after {
     transform: scale(1);
     box-shadow: 10px 0 20px rgba(0, 0, 0, 0.19), 6px 0 6px rgba(0, 0, 0, 0.23);
 }
-i.material-icons:nth-of-type(1) {
-    background-color: #cd8484;
+i.material-icons {
+    background-color: #ffaa99;
 }
-i.material-icons:nth-of-type(1):hover {
-    color: #cd8484;
+i.material-icons:hover {
+    color: #ffaa99;
 }
-i.material-icons:nth-of-type(1):after {
-    border-color: #cd8484;
-}
-i.material-icons:nth-of-type(2) {
-    background-color: #ec9f83;
-}
-i.material-icons:nth-of-type(2):hover {
-    color: #ec9f83;
-}
-i.material-icons:nth-of-type(2):after {
-    border-color: #ec9f83;
-}
-i.material-icons:nth-of-type(3) {
-    background-color: #cdb274;
-}
-i.material-icons:nth-of-type(3):hover {
-    color: #cdb274;
-}
-i.material-icons:nth-of-type(3):after {
-    border-color: #cdb274;
-}
-i.material-icons:nth-of-type(4) {
-    background-color: #88b999;
-}
-i.material-icons:nth-of-type(4):hover {
-    color: #88b999;
-}
-i.material-icons:nth-of-type(4):after {
-    border-color: #88b999;
+i.material-icons:after {
+    border-color: #ffaa99;
 }
 i.color1 {
-    background-color: #facdff;
+    background-color: #ff8a80;
 }
 i.color1:hover {
-    color: #facdff;
+    color: #ff8a80;
 }
 i.color1:after {
-    border-color: #facdff;
+    border-color: #ff8a80;
 }
 i.color2 {
-    background-color: #cdfffa;
+    background-color: #8095ff;
 }
 i.color2:hover {
-    color: #cdfffa;
+    color: #8095ff;
 }
 i.color2:after {
-    border-color: #cdfffa;
+    border-color: #8095ff;
 }
 i.color3 {
-    background-color: #fffacd;
+    background-color: #ffd580;
 }
 i.color3:hover {
-    color: #fffacd;
+    color: #ffd580;
 }
 i.color3:after {
-    border-color: #fffacd;
+    border-color: #ffd580;
 }
 i.material-icons:hover {
     background-color: transparent;
-    transform: rotate(90deg);
+/*  transform: rotate(90deg); */
     cursor: pointer;
     box-shadow: none;
 }

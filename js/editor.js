@@ -1,4 +1,11 @@
-// Initialization
+const {
+    BrowserWindow
+} = require('electron').remote;
+const {
+    ipcRenderer
+} = require('electron');
+
+// Vue Instances
 (function() {
     marked.setOptions({
         highlight: function(code, lang) {
@@ -11,7 +18,8 @@
             input: '## Markdown Stickies\r- Edit here\r- Write your to-do list\r> With Markdown Stickies.  \r> Nice and cool, isn\'t it ?\r\r### Help\r- Check our website: http://\r- Markdown Reference: http://\r\r|app name|ver|by|\r|-|-|-|\r|Markdown Stickies|0.1.0|honake|\r',
             showMenu: false,
             color: 'color1',
-            mode: 'view'
+            mode: 'view',
+            float: 'flip_to_front'
         },
         methods: {
             navigationOpen: function() {
@@ -33,16 +41,29 @@
                 this.mode = 'view';
             },
             OpenWindow: function() {
-                var rand = Math.floor(Math.random() * 31); // Randomization
-                var x = window.screenX - 300 - rand;
-                var y = window.screenY + rand;
-                window.open('another.html', '', 'width=300, height=400, left=' + x + ', top=' + y);
+                unique_id = BrowserWindow.getFocusedWindow().id
+                ipcRenderer.send('createStickies', unique_id);
             },
             CloseWindow: function() {
                 var confirmation = confirm('Are you sure ?')
                 if (confirmation) {
                     window.close()
                 }
+            },
+            FloatWindow: function() {
+                focused_window = BrowserWindow.getFocusedWindow()
+                unique_id = focused_window.id
+                if (focused_window.isAlwaysOnTop()) {
+                    this.float = 'flip_to_front'
+                    ipcRenderer.send('flip_to_back', unique_id);
+                } else {
+                    this.float = 'flip_to_back'
+                    ipcRenderer.send('flip_to_front', unique_id);
+                }
+            },
+            OpacityWindow: function() {
+                unique_id = BrowserWindow.getFocusedWindow().id
+                ipcRenderer.send('opacityWindow', unique_id);
             },
             InvertColors: function() {
                 switch (this.color) {
@@ -66,23 +87,3 @@
         }
     });
 }).call(this);
-
-/* Navigation System
-
-function OpacityWindow() {
-    console.log('opacity')
-}
-
-function FloatWindow() {
-    console.log('float')
-}
-
-function WrapWindow() {
-    memoryX = window.innerWidth
-    memoryY = window.innerHeight
-    window.resizeTo(200, 100);
-}
-
-function UnwrapWindow() {
-    window.resizeTo(memoryX, memoryY);
-} */

@@ -1,21 +1,58 @@
+// Modules
 const electron = require('electron');
-// Module to control application life.
-const {
-    app
-} = electron;
-// Module to create native browser window.
-const {
-    BrowserWindow
-} = electron;
+const app = electron.app;
+const BrowserWindow = electron.BrowserWindow;
+const Menu = electron.Menu;
+const dialog = electron.dialog;
+const ipcMain = electron.ipcMain;
 
-// Keep a global reference of the window object, if you don't, the window will
-// be closed automatically when the JavaScript object is garbage collected.
-let win;
+// Global Variables
+let mainWindow;
+let anotherWindow;
 
-function createWindow() {
+let menuTemplate = [{
+    label: 'MyApp',
+    submenu: [{
+            label: 'About',
+            click: function() {
+                showAboutDialog();
+            }
+        }, {
+            label: 'New',
+            accelerator: 'CmdOrCtrl+N',
+            click: function() {
+                createAnotherWindow();
+            }
+        }, {
+            label: 'Delete',
+            accelerator: 'CmdOrCtrl+W',
+            click: function() {
+            BrowserWindow.getFocusedWindow().close()
+        }
+      },
+    {
+        label: 'Quit',
+        accelerator: 'CmdOrCtrl+Q',
+        click: function() {
+            app.quit();
+        }
+    }]
+}];
+let menu = Menu.buildFromTemplate(menuTemplate);
 
-    // Create the browser window.
-    win = new BrowserWindow({
+// Functions that have to be run on main process
+function showAboutDialog() {
+    dialog.showMessageBox({
+        type: 'info',
+        buttons: ['OK'],
+        message: 'About This App',
+        detail: 'This app was created by @honake'
+    });
+}
+
+function createMainWindow() {
+    Menu.setApplicationMenu(menu);
+    mainWindow = new BrowserWindow({
         'width': 320,
         'height': 440,
         'transparent': true,
@@ -25,42 +62,65 @@ function createWindow() {
         'title': 'Markdown Stickies',
         'icon': undefined,
     });
-
-    // and load the index.html of the app.
-    win.loadURL(`file://${__dirname}/index.html`);
-
-    // Emitted when the window is closed.
-    win.on('closed', () => {
-        // Dereference the window object, usually you would store windows
-        // in an array if your app supports multi windows, this is the time
-        // when you should delete the corresponding element.
-        win = null;
+    mainWindow.loadURL(`file://${__dirname}/index.html`);
+    mainWindow.on('closed', () => {
+        mainWindow = null;
     });
-
 }
 
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
-// Some APIs can only be used after this event occurs.
-app.on('ready', createWindow);
+function createAnotherWindow() {
+    if (BrowserWindow.getAllWindows().length !== 0)
+    {
+      focused_window = BrowserWindow.getFocusedWindow()
+      // Randomization <-- To be fixed !
+      rand = Math.floor(Math.random() * 51);
+      x = focused_window.getPosition()[0] - 300 - rand;
+      y = focused_window.getPosition()[1] + rand;
+    }
+    anotherWindow = new BrowserWindow({
+        'width': 300,
+        'height': 400,
+        'transparent': true,
+        'frame': false,
+        'minWidth': 200,
+        'minHeight': 75,
+        'x': x,
+        'y': y
+    });
+    anotherWindow.loadURL(`file://${__dirname}/another.html`);
+    anotherWindow.show;
+    anotherWindow.on('closed', () => {
+        anotherWindow = null;
+    });
+}
 
+// Main Process & Renderers
+ipcMain.on('createStickies', function(event, unique_id) {
+    focused_window = BrowserWindow.fromId(unique_id)
+    createAnotherWindow()
+})
 
-// Quit when all windows are closed.
+ipcMain.on('flip_to_front', function(event, unique_id) {
+    focused_window = BrowserWindow.fromId(unique_id)
+    focused_window.setAlwaysOnTop(true)
+})
+
+ipcMain.on('flip_to_back', function(event, unique_id) {
+    focused_window = BrowserWindow.fromId(unique_id)
+    focused_window.setAlwaysOnTop(false)
+})
+
+// Activation & Setups
+app.on('ready', createMainWindow);
+
 app.on('window-all-closed', () => {
-    // On OS X it is common for applications and their menu bar
-    // to stay active until the user quits explicitly with Cmd + Q
     if (process.platform !== 'darwin') {
         app.quit();
     }
 });
 
 app.on('activate', () => {
-    // On OS X it's common to re-create a window in the app when the
-    // dock icon is clicked and there are no other windows open.
-    if (win === null) {
-        createWindow();
+    if (mainWindow === null) {
+        createMainWindow();
     }
 });
-
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and require them here.

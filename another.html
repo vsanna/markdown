@@ -6,20 +6,22 @@
     <script src="js/vue.js"></script>
     <link rel="stylesheet" href="css/style_import.css">
 </head>
-    <body id="master" v-on:mouseenter="navigationOpen" v-on:mouseleave="navigationClose" class="{{color}}">
-        <div class="editor">
-            <textarea v-model="input" style="display:none;" id="switch_1"></textarea>
-            <div v-html="input | marked" id="switch_2"></div>
-        </div>
-        <div class="navigation" v-bind:class="{'show': showMenu}">
-            <i v-on:click="Edit" class="material-icons">border_color</i>
-            <i v-on:click="View" class="material-icons">remove_red_eye</i>
-            <i v-on:click="OpenWindow" class="material-icons">note_add</i>
-            <i v-on:click="CloseWindow" class="material-icons">delete</i>
-            <i v-on:click="InvertColors" class="material-icons {{color}}">invert_colors</i>
-        </div>
-    </body>
-    <script src="js/another_editor.js"></script>
+
+<body id="master" v-on:mouseenter="navigationOpen" v-on:mouseleave="navigationClose" class="{{color}} {{mode}}">
+    <div class="editor">
+        <textarea v-model="input" style="display:none;" id="switch_1"></textarea>
+        <div v-html="input | marked" id="switch_2"></div>
+    </div>
+    <div class="navigation" v-bind:class="{'show': showMenu}">
+        <i v-on:click="Edit" class="material-icons">border_color</i>
+        <i v-on:click="View" class="material-icons">remove_red_eye</i>
+        <i v-on:click="OpenWindow" class="material-icons">note_add</i>
+        <i v-on:click="CloseWindow" class="material-icons">delete</i>
+        <i v-on:click="FloatWindow" class="material-icons">{{float}}</i>
+        <i v-on:click="InvertColors" class="material-icons {{color}}">invert_colors</i>
+    </div>
+</body>
+<script src="js/another_editor.js"></script>
 </body>
 
 </html>
