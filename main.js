@@ -27,15 +27,14 @@ let menuTemplate = [{
             label: 'Delete',
             accelerator: 'CmdOrCtrl+W',
             click: function() {
-            BrowserWindow.getFocusedWindow().close()
-        }
-      },
-    {
-        label: 'Quit',
-        accelerator: 'CmdOrCtrl+Q',
-        click: function() {
-            app.quit();
-        }
+                BrowserWindow.getFocusedWindow().close()
+            }
+        }, {
+            label: 'Quit',
+            accelerator: 'CmdOrCtrl+Q',
+            click: function() {
+                app.quit();
+            }
     }]
 }];
 let menu = Menu.buildFromTemplate(menuTemplate);

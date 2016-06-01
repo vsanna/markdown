@@ -1,20 +1,24 @@
 {
-    "name": "markdown",
-    "version": "1.0.0",
-    "description": "",
-    "main": "main.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/honake/markdown.git"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/honake/markdown/issues"
-    },
-    "homepage": "https://github.com/honake/markdown#readme"
+  "name": "markdown",
+  "version": "1.0.0",
+  "description": "some description",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/honake/markdown.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/honake/markdown/issues"
+  },
+  "homepage": "https://github.com/honake/markdown#readme",
+  "devDependencies": {
+    "electron-prebuilt": "^1.2.0"
+  }
 }

@@ -22,17 +22,30 @@ const {
             float: 'flip_to_front'
         },
         methods: {
+            /*
+             * 以下のメソッドを定義して、htmlのmouseoverにはtoggleだけを設置しましょう。
+               toggleNavigation: function(){
+                 if ( this.showMenu ){
+                   this.navigationClose();
+                 } else {
+                   this.navigationOpen();
+                 }
+               }
+             * */
             navigationOpen: function() {
                 this.showMenu = true;
-                console.log('open')
+                console.log('open'); // consoleは消そう。また行末セミコロンは絶対につけよう
             },
             navigationClose: function() {
                 this.showMenu = false;
-                console.log('close')
+                console.log('close') // 同上
             },
+            // 原則命名は趣味嗜好だと思っていますのであくまで一意見ですが、
+            // jsはcamelcaseを基本とするので、editがいいのかも. editHogeFuga
             Edit: function() {
-                document.getElementById("switch_1").style.display = "block";
+                document.getElementById("switch_1").style.display = "block"; 
                 document.getElementById("switch_2").style.display = "none";
+                // 対象のdomにv-show="hoge"を設置して、ここでthis.hoge = true/falseしたほうがきれい
                 this.mode = 'edit';
             },
             View: function() {
@@ -49,6 +62,11 @@ const {
                 if (confirmation) {
                     window.close()
                 }
+                /* こうもかけます。どちらもOK
+                 * if ( confirm('are you sure?') ){
+                 *  window.close();
+                 * }
+                 * */
             },
             FloatWindow: function() {
                 focused_window = BrowserWindow.getFocusedWindow()
@@ -67,9 +85,9 @@ const {
             },
             InvertColors: function() {
                 switch (this.color) {
-                    case 'color1':
+                    case 'color1': // color1, color2という変数名は後でわからなくなるので説明的な変数名がいいです
                         this.color = 'color2';
-                        console.log(this.color);
+                        console.log(this.color); // console.logは使ったら消すといいです。ただ個人開発なら最後にまとめて消すでもOKです
                         break
                     case 'color2':
                         this.color = 'color3';
@@ -80,6 +98,25 @@ const {
                         console.log(this.color);
                         break
                 }
+                /*
+                 * ココのロジックを拝見すると、今1だったら2へ、2だったら3へ、3だったら1へ順繰りに変更していくんですよね
+                 * であれば、console.log抜きにして9行使うのは少々もったいない(同じ様は記述の繰り返しが見られる)ので、以下のようには出来ないでしょうか。
+                 *
+                 * まず、dataオブジェクトに以下のように追記
+                 *
+                 * data: {
+                 *   colors: ['green', 'red', 'orange'], // 仮にここでは上記のcolor1, color2, color3に対応するとする
+                 *   currentColor: 0, // 初期値は0(this.colors[this.currentColor]と使用する)
+                 * }
+                 *
+                 * 次にInvertColorsのメソッドをリファクタ
+                 * invertColors: function(){
+                 *   this.currentColor = (this.currentColor < this.colors.length) ? 
+                 *                        this.currentColor + 1 : 1 ;
+                 * }
+                 *
+                 * こうすると2行で済みますし、また色を追加するのもthis.colorsの配列に文字列を放り込んでいくだけです。
+                 * */
             }
         },
         filters: {
