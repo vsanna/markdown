@@ -9,8 +9,8 @@
 
 <body id="master" v-on:mouseenter="navigationOpen" v-on:mouseleave="navigationClose" class="{{color}} {{mode}}">
     <div class="editor">
-        <textarea v-model="input" style="display:none;" id="switch_1"></textarea>
-        <div v-html="input | marked" id="switch_2"></div>
+        <textarea v-model="input" v-if="mode.edit"></textarea>
+        <div v-html="input | marked" v-else></div>
     </div>
     <div class="navigation" v-bind:class="{'show': showMenu}">
         <i v-on:click="Edit" class="material-icons">border_color</i>

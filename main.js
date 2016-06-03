@@ -27,7 +27,7 @@ let menuTemplate = [{
             label: 'Delete',
             accelerator: 'CmdOrCtrl+W',
             click: function() {
-                BrowserWindow.getFocusedWindow().close()
+                BrowserWindow.getFocusedWindow().close();
             }
         }, {
             label: 'Quit',
@@ -50,14 +50,14 @@ function showAboutDialog() {
 }
 
 function createMainWindow() {
-    Menu.setApplicationMenu(menu);
+  //  Menu.setApplicationMenu(menu);
     mainWindow = new BrowserWindow({
         'width': 320,
         'height': 440,
-        'transparent': true,
+  //      'transparent': true,
         'frame': false,
-        'minWidth': 200,
-        'minHeight': 75,
+        'minWidth': 150,
+        'minHeight': 240,
         'title': 'Markdown Stickies',
         'icon': undefined,
     });
@@ -70,7 +70,7 @@ function createMainWindow() {
 function createAnotherWindow() {
     if (BrowserWindow.getAllWindows().length !== 0)
     {
-      focused_window = BrowserWindow.getFocusedWindow()
+      focused_window = BrowserWindow.getFocusedWindow();
       // Randomization <-- To be fixed !
       rand = Math.floor(Math.random() * 51);
       x = focused_window.getPosition()[0] - 300 - rand;
@@ -95,19 +95,19 @@ function createAnotherWindow() {
 
 // Main Process & Renderers
 ipcMain.on('createStickies', function(event, unique_id) {
-    focused_window = BrowserWindow.fromId(unique_id)
-    createAnotherWindow()
-})
+    focused_window = BrowserWindow.fromId(unique_id);
+    createAnotherWindow();
+});
 
 ipcMain.on('flip_to_front', function(event, unique_id) {
-    focused_window = BrowserWindow.fromId(unique_id)
-    focused_window.setAlwaysOnTop(true)
-})
+    focused_window = BrowserWindow.fromId(unique_id);
+    focused_window.setAlwaysOnTop(true);
+});
 
 ipcMain.on('flip_to_back', function(event, unique_id) {
-    focused_window = BrowserWindow.fromId(unique_id)
-    focused_window.setAlwaysOnTop(false)
-})
+    focused_window = BrowserWindow.fromId(unique_id);
+    focused_window.setAlwaysOnTop(false);
+});
 
 // Activation & Setups
 app.on('ready', createMainWindow);

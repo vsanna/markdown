@@ -8,7 +8,7 @@
     font-family: 'Material Icons';
     font-weight: normal;
     font-style: normal;
-    font-size: 24px;
+    font-size: 21px;
     line-height: 1;
     letter-spacing: normal;
     text-transform: none;
@@ -26,24 +26,23 @@ i.material-icons {
     border-radius: 50%;
     padding: 5px;
     margin: 3px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     transition: color 0.2s ease, background-color 0.2s ease, transform 0.3s ease;
+}
+i.material-icons:hover {
+    background-color: transparent;
+    cursor: pointer;
+    box-shadow: none;
 }
 i.material-icons:after {
     content: "";
     width: 100%;
     height: 100%;
     border: solid 2px;
-    transform: scale(0.8);
     position: absolute;
     top: -2px;
     left: -2px;
     border-radius: 50%;
-    transition: all 0.3s ease;
-}
-i.material-icons:hover:after {
-    transform: scale(1);
-    box-shadow: 10px 0 20px rgba(0, 0, 0, 0.19), 6px 0 6px rgba(0, 0, 0, 0.23);
+    transition: all 0.4s ease;
 }
 i.material-icons {
     background-color: #ffaa99;
@@ -54,36 +53,30 @@ i.material-icons:hover {
 i.material-icons:after {
     border-color: #ffaa99;
 }
-i.color1 {
+i.green {
     background-color: #ff8a80;
 }
-i.color1:hover {
+i.green:hover {
     color: #ff8a80;
 }
-i.color1:after {
+i.green:after {
     border-color: #ff8a80;
 }
-i.color2 {
+i.red {
     background-color: #8095ff;
 }
-i.color2:hover {
+i.red:hover {
     color: #8095ff;
 }
-i.color2:after {
+i.red:after {
     border-color: #8095ff;
 }
-i.color3 {
+i.orange {
     background-color: #ffd580;
 }
-i.color3:hover {
+i.orange:hover {
     color: #ffd580;
 }
-i.color3:after {
+i.orange:after {
     border-color: #ffd580;
-}
-i.material-icons:hover {
-    background-color: transparent;
-/*  transform: rotate(90deg); */
-    cursor: pointer;
-    box-shadow: none;
 }

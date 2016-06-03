@@ -8,18 +8,21 @@
     <link rel="stylesheet" href="css/style_import.css">
 </head>
 
-<body id="master" v-on:mouseenter="navigationOpen" v-on:mouseleave="navigationClose" class="{{color}} {{mode}}">
+<body id="master" v-on:mousemove="navigationOpen" v-bind:class="[colors[currentColor], {edit: mode}]">
     <div class="editor">
-        <textarea v-model="input" style="display:none;" id="switch_1"></textarea>
-        <div v-html="input | marked" id="switch_2"></div>
+        <textarea v-model="input" v-if="mode"></textarea>
+        <div v-html="input | marked" v-else></div>
     </div>
     <div class="navigation" v-bind:class="{'show': showMenu}">
-        <i v-on:click="Edit" class="material-icons">border_color</i>
-        <i v-on:click="View" class="material-icons">remove_red_eye</i>
-        <i v-on:click="OpenWindow" class="material-icons">note_add</i>
-        <i v-on:click="CloseWindow" class="material-icons">delete</i>
-        <i v-on:click="FloatWindow" class="material-icons">{{float}}</i>
-        <i v-on:click="InvertColors" class="material-icons {{color}}">invert_colors</i>
+        <i v-on:click="view" class="material-icons" v-if="mode">remove_red_eye</i>
+        <i v-on:click="edit" class="material-icons" v-else>border_color</i>
+        <span v-if="moreButtons">
+            <i v-on:click="openWindow" class="material-icons">note_add</i>
+            <i v-on:click="closeWindow" class="material-icons">delete</i>
+            <i v-on:click="floatWindow" class="material-icons">{{float}}</i>
+            <i v-on:click="invertColors" class="material-icons {{colors[currentColor]}}">invert_colors</i>
+        </span>
+        <i v-on:click="more" class="material-icons">more_horiz</i>
     </div>
 </body>
 <script src="js/editor.js"></script>
