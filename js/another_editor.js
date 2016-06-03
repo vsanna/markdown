@@ -17,69 +17,59 @@ const {
         data: {
             input: '',
             showMenu: false,
-            color: 'color1',
-            mode: 'view',
-            float: 'flip_to_front'
+            mode: false,
+            moreButtons: false,
+            float: 'flip_to_front',
+            colors: ['green', 'red', 'orange'],
+            currentColor: 0
         },
         methods: {
             navigationOpen: function() {
+                var utilBarTimer;
+                if (utilBarTimer) {
+                     clearTimeout(utilBarTimer);
+                }
+                console.log('hoge');
                 this.showMenu = true;
-                console.log('open')
+                utilBarTimer = setTimeout(function() {
+                    this.showMenu = false;
+                }, 2000);
             },
-            navigationClose: function() {
-                this.showMenu = false;
-                console.log('close')
+            edit: function() {
+                this.mode = true;
             },
-            Edit: function() {
-                document.getElementById("switch_1").style.display = "block";
-                document.getElementById("switch_2").style.display = "none";
-                this.mode = 'edit';
+            view: function() {
+                this.mode = false;
             },
-            View: function() {
-                document.getElementById("switch_1").style.display = "none";
-                document.getElementById("switch_2").style.display = "block";
-                this.mode = 'view';
+            more: function() {
+                this.moreButtons = !this.moreButtons;
             },
-            OpenWindow: function() {
-                unique_id = BrowserWindow.getFocusedWindow().id
+            openWindow: function() {
+                unique_id = BrowserWindow.getFocusedWindow().id;
                 ipcRenderer.send('createStickies', unique_id);
             },
-            CloseWindow: function() {
-                var confirmation = confirm('Are you sure ?')
-                if (confirmation) {
-                    window.close()
+            closeWindow: function() {
+                if (confirm('Are you sure ?')) {
+                    window.close();
                 }
             },
-            FloatWindow: function() {
-                focused_window = BrowserWindow.getFocusedWindow()
-                unique_id = focused_window.id
+            floatWindow: function() {
+                focused_window = BrowserWindow.getFocusedWindow();
+                unique_id = focused_window.id;
                 if (focused_window.isAlwaysOnTop()) {
-                    this.float = 'flip_to_front'
+                    this.float = 'flip_to_front';
                     ipcRenderer.send('flip_to_back', unique_id);
                 } else {
-                    this.float = 'flip_to_back'
+                    this.float = 'flip_to_back';
                     ipcRenderer.send('flip_to_front', unique_id);
                 }
             },
-            OpacityWindow: function() {
-                unique_id = BrowserWindow.getFocusedWindow().id
+            opacityWindow: function() {
+                unique_id = BrowserWindow.getFocusedWindow().id;
                 ipcRenderer.send('opacityWindow', unique_id);
             },
-            InvertColors: function() {
-                switch (this.color) {
-                    case 'color1':
-                        this.color = 'color2';
-                        console.log(this.color);
-                        break
-                    case 'color2':
-                        this.color = 'color3';
-                        console.log(this.color);
-                        break
-                    case 'color3':
-                        this.color = 'color1';
-                        console.log(this.color);
-                        break
-                }
+            invertColors: function() {
+                this.currentColor = (this.currentColor < this.colors.length - 1) ? this.currentColor + 1 : 0;
             }
         },
         filters: {
